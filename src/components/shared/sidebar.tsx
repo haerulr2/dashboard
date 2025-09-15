@@ -1,7 +1,7 @@
+"use client";
 import React from "react";
-import { Bolt, ClipboardClock, Cpu, Disc2, LayoutDashboard, Shell, Webhook, Workflow } from 'lucide-react';
-import Divider from "../ui/divider";
-import { Button } from "../ui/button";
+import { Bolt, ClipboardClock, Cpu, Disc2, LayoutDashboard, Webhook, Workflow } from 'lucide-react';
+import { Button, Divider } from "@heroui/react";
 
 const Sidebar = () => {
   return (

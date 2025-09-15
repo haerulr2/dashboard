@@ -1,5 +1,4 @@
 import CardPrice from "@/components/shared/card_price";
-import Image from "next/image";
 
 export default function Home() {
   return (
