@@ -7,12 +7,13 @@ export default async function Home() {
   const protocol = hdrs.get("x-forwarded-proto") ?? "http";
   const baseUrl = host ? `${protocol}://${host}` : "";
 
-  let btcPrice = 0, ethPrice = 0;
+  let btcPrice = 0, ethPrice = 0, solPrice = 0;
   try {
     if (baseUrl) {
-      const [btcRes, ethRes] = await Promise.all([
-        fetch(`${baseUrl}/api/btc`, { next: { revalidate: 60 } }),
-        fetch(`${baseUrl}/api/eth`, { next: { revalidate: 60 } }),
+      const [btcRes, ethRes, solRes] = await Promise.all([
+        fetch(`${baseUrl}/api/btc`),
+        fetch(`${baseUrl}/api/eth`),
+        fetch(`${baseUrl}/api/sol`),
       ]);
 
       if (btcRes.ok) {
@@ -24,10 +25,16 @@ export default async function Home() {
         const ethData = await ethRes.json();
         ethPrice = ethData.price ?? 0;
       }
+
+      if (solRes.ok) {
+        const solData = await solRes.json();
+        solPrice = solData.price ?? 0;
+      }
     }
   } catch {
     btcPrice = 0;
     ethPrice = 0;
+    solPrice = 0;
   }
 
   return (
@@ -35,7 +42,7 @@ export default async function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <CardPrice currency="Bitcoin (BTC)" price={btcPrice} />
         <CardPrice currency="Ethereum (ETH)" price={ethPrice} />
-        <CardPrice currency="GBP" price={19.99} />
+        <CardPrice currency="Solana (SOL)" price={solPrice} />
       </div>
     </main>
   );
