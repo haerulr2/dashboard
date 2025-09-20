@@ -17,7 +17,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="sidebar max-w-[300px] w-full h-screen border-r py-4 px-2 bg-zinc-800 dark:bg-zinc-900 text-white">
+    <div className="sidebar max-w-[300px] w-full h-screen py-4 px-2 bg-zinc-800 dark:bg-zinc-900 text-white">
       <div className="logo mb-4 flex items-center gap-2 text-2xl font-bold">
         <Disc2 />
         <h2>Haerulr2</h2>
