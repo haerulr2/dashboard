@@ -30,7 +30,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex flex-nowrap">
             <Sidebar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 bg-foreground">{children}</main>
           </div>
         </Providers>
       </body>
