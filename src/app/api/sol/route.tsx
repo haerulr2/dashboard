@@ -17,7 +17,7 @@ export async function GET() {
 
     return NextResponse.json({ price });
 
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to fetch Solana price data.' },
       { status: 500 }
