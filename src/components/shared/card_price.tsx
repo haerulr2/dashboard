@@ -1,8 +1,14 @@
 "use client";
-import { Card } from "@heroui/react";
+
 import React from "react";
 
-const CardPrice = ({ currency, price }: { currency: string; price: number; }) => {
+const CardPrice = ({
+  currency,
+  price,
+}: {
+  currency: string;
+  price: number;
+}) => {
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -10,10 +16,10 @@ const CardPrice = ({ currency, price }: { currency: string; price: number; }) =>
   }).format(price);
 
   return (
-    <Card className="p-4 bg-black border-1 border-zinc-400 space-y-4">
-      <div className="text-base text-default-400">{currency}</div>
-      <div className="text-3xl font-semibold text-end">{formattedPrice}</div>
-    </Card>
+    <div className="p-4 border-1 rounded-md border-zinc-400 space-y-4 bg-black">
+      <div className="text-base text-white">{currency}</div>
+      <div className="text-3xl font-semibold text-end text-white">{formattedPrice}</div>
+    </div>
   );
 };
 
