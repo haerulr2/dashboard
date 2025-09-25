@@ -1,6 +1,10 @@
 'use client';
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 import { Plus, Send, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -205,21 +209,34 @@ const PlaygroundContent = () => {
             <SelectItem value="DELETE">DELETE</SelectItem>
           </SelectContent>
         </Select>
-        <input
-          type="text"
+        <Input
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://api.example.com/data"
-          className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          className="flex-1 border rounded-lg px-4 py-2"
         />
-        <button
+        <Button
           onClick={handleSendRequest}
           disabled={loading}
-          className="flex items-center gap-2 bg-teal-600 hover:bg-teal-700 disabled:bg-teal-900 disabled:cursor-not-allowed text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+          className={cn(
+            "flex items-center gap-2 bg-teal-700 hover:bg-teal-600 disabled:bg-teal-900",
+            "disabled:cursor-not-allowed text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+          )}
         >
           {loading ? "Sending..." : "Send"} <Send />
-        </button>
+        </Button>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Request</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex border-b border-gray-700">
+           <h2 className="text-lg font-semibold text-white">Request</h2>
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="bg-gray-800 border border-gray-700 rounded-xl min-h-[250px]">
         <div className="flex border-b border-gray-700">
